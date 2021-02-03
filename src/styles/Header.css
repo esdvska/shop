@@ -1,0 +1,17 @@
+.navigation {
+  background-color: rgb(19, 32, 44);
+  color: whitesmoke;
+}
+.navigation ul {
+  list-style-type: none;
+  padding: 20px;
+  margin-left: 300px;
+}
+.navigation li {
+  display: inline;
+  margin-left: 50px;
+}
+.navigation a {
+  text-decoration: none;
+  color: rgb(245, 245, 245);
+}

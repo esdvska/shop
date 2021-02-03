@@ -1,0 +1,10 @@
+.footer {
+  line-height: 20px;
+  font-size: 14px;
+  text-align: right;
+
+  background-color: rgb(27, 31, 54);
+  padding: 20px 300px 20px 0;
+  height: 80px;
+  color: aliceblue;
+}
