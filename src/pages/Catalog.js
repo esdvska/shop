@@ -1,14 +1,39 @@
 import React, { useState, useContext } from "react";
-import "../styles/Catalog.css";
-import "../styles/App.css";
+
 import { AppContext } from "../AppContext";
+
+import "../styles/App.css";
+import "../styles/Catalog.css";
 
 const Catalog = () => {
   const { products } = useContext(AppContext);
 
+  // STATE
   const [inputValue, setInputValue] = useState("");
-
   const [radioValue, setRadioValue] = useState("all");
+  const [radioSearch, setRadioSearch] = useState("");
+  const [checkedRadio, setCheckedRadio] = useState();
+
+  // FUNKCJE OBSŁUGUJĄCE ZMIANY
+  const handleSearch = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleRadio = (e) => {
+    setRadioSearch(e.target.value);
+  };
+
+  const showManufacturer = (e) => {
+    setCheckedRadio();
+    setInputValue("");
+    setRadioValue(e.target.value);
+  };
+  const handleClear = () => {
+    setInputValue("");
+    setRadioSearch("");
+    setRadioValue("all");
+    setCheckedRadio(false);
+  };
+  // LEWA KOLUMNA MANUFACTURERS
 
   let manArr = [];
   let twiced = [];
@@ -21,10 +46,6 @@ const Catalog = () => {
     }
   }
 
-  const showManufacturer = (e) => {
-    setInputValue("");
-    setRadioValue(e.target.value);
-  };
   const manufacturers = manArr.map((product) => {
     return (
       <div key={product}>
@@ -34,12 +55,13 @@ const Catalog = () => {
           id={product}
           value={product}
           onChange={showManufacturer}
+          checked={checkedRadio}
         />
         <label htmlFor={product}> {product}</label>
       </div>
     );
   });
-
+  // WSZYSTKIE PRODUKTY
   const allProducts = products.map((product) => {
     return (
       <div key={product.id} className="product">
@@ -50,8 +72,22 @@ const Catalog = () => {
     );
   });
 
+  // PRODUKTY PO ZAZNACZENIU FIRMY PO LEWEJ
   const searchProRadio = products.filter((product) => {
     return product.manufacture === radioValue;
+  });
+
+  const productsRadioSearch = searchProRadio.filter((product) =>
+    product.name.toLowerCase().includes(radioSearch.toLowerCase())
+  );
+  const displayProductsRadioSearch = productsRadioSearch.map((product) => {
+    return (
+      <div key={product.id} className="product">
+        <img src={product.image} alt={product.name} />
+        <p className="price">{product.amount}</p>
+        <p>{product.name}</p>
+      </div>
+    );
   });
   const searchRadio = searchProRadio.map((product) => {
     return (
@@ -62,7 +98,10 @@ const Catalog = () => {
       </div>
     );
   });
-  const radioProducts = radioValue === "all" ? allProducts : searchRadio;
+  const displayTogether = radioSearch
+    ? displayProductsRadioSearch
+    : searchRadio;
+  const radioProducts = radioValue === "all" ? allProducts : displayTogether;
 
   const searchProducts = products.filter((product) =>
     product.name.toLowerCase().includes(inputValue.toLowerCase())
@@ -78,11 +117,6 @@ const Catalog = () => {
     );
   });
 
-  const handleSearch = (e) => {
-    setInputValue(e.target.value);
-    manufacturers.forEach((manufacturer) => manufacturer.checked === false);
-  };
-
   const displayProducts = inputValue ? displaySearchProducts : radioProducts;
   return (
     <div className="container">
@@ -91,16 +125,17 @@ const Catalog = () => {
         <div className="column-left">
           <div className="filter">
             <div className="filter-header">
-              {" "}
               <h4>Search</h4>
-              <span className="clear">Clear</span>
-            </div>{" "}
+              <span className="clear" onClick={handleClear}>
+                Clear
+              </span>
+            </div>
             <div>
               <input
                 type="text"
                 placeholder="search..."
-                value={inputValue}
-                onChange={handleSearch}
+                value={radioValue === "all" ? inputValue : radioSearch}
+                onChange={radioValue === "all" ? handleSearch : handleRadio}
               ></input>
             </div>
             <h4>Manufacturer</h4>
@@ -112,6 +147,7 @@ const Catalog = () => {
                   id="all"
                   value="all"
                   onChange={showManufacturer}
+                  checked={checkedRadio}
                 />
                 <label htmlFor="all">All</label>
               </div>
