@@ -1,17 +1,24 @@
-.navigation {
-  background-color: rgb(19, 32, 44);
-  color: whitesmoke;
+.navbar {
+  position: relative;
+  min-height: 50px;
+  background-color: #0b102b;
 }
-.navigation ul {
+
+.nav {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
   list-style-type: none;
-  padding: 20px;
-  margin-left: 300px;
 }
-.navigation li {
-  display: inline;
-  margin-left: 50px;
+.nav > li {
+  float: left;
 }
-.navigation a {
+
+.nav > li > a {
+  font-size: 16px;
+  font-weight: 100;
+  padding: 15px 35px;
+  color: #fff;
+  display: block;
   text-decoration: none;
-  color: rgb(233, 233, 233);
 }

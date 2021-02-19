@@ -6,9 +6,9 @@ import "../styles/Header.css";
 
 const Header = () => {
   return (
-    <div className="navigation">
-      <nav>
-        <ul>
+    <nav className="navbar">
+      <div className="container">
+        <ul className="nav">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -21,8 +21,8 @@ const Header = () => {
             <NavLink to="/about">About </NavLink>
           </li>
         </ul>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 

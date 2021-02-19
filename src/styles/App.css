@@ -1,17 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Catamaran:400,100,300");
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Maven Pro", sans-serif;
 }
-.app {
-  background-color: rgb(175, 175, 175);
+html,
+body {
+  font-family: "Catamaran", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  background-color: #eee;
+  text-align: left;
 }
 .container {
-  width: 90vw;
-  height: 100%;
-  padding: 40px 300px;
+  width: 970px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
-h1 {
-  margin: 40px 0;
+.header-big {
+  font-size: 30px;
+  text-transform: uppercase;
+  padding: 15px 0;
+}
+
+.header-small {
+  font-size: 22px;
+  text-transform: uppercase;
+  padding: 5px 0;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product {
+  width: 25%;
+
+  background: white;
+  margin: 1%;
+  text-align: center;
+  flex: 1 0 23%;
+}
+
+.product img {
+  display: block;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.product p.price {
+  display: inline-block;
+  font-size: 24px;
+  line-height: 28px;
+  color: #00a1b4;
+  padding: 3px 0px;
 }

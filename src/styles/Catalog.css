@@ -1,4 +1,28 @@
 .catalog {
   display: flex;
-  flex-wrap: wrap;
+}
+.filter {
+  background-color: #f7f7f7;
+  padding: 5px 15px 20px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-header .clear {
+  color: #00a1b4;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.column-left {
+  width: 25%;
+}
+.column-right {
+  width: 75%;
 }

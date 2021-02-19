@@ -12,13 +12,11 @@ import "../styles/App.css";
 const App = () => {
   return (
     <Router>
-      <div className="app">
-        <header>{<Header />}</header>
-        <div className="container">
-          <Main />
-        </div>
-        <Footer />
-      </div>
+      <header>{<Header />}</header>
+
+      <Main />
+
+      <Footer />
     </Router>
   );
 };

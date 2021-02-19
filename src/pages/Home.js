@@ -14,30 +14,30 @@ const Home = () => {
   );
   const desktopFeatured = desktops.map((product) => {
     return (
-      <div key={product.id} className="featured">
+      <div key={product.id} className="product">
         <img src={product.image} alt={product.name} />
-        <p>{product.amount}</p>
+        <p className="price">{product.amount}</p>
         <p>{product.name}</p>
       </div>
     );
   });
   const tabletsFeatured = tablets.map((product) => {
     return (
-      <div key={product.id} className="featured">
+      <div key={product.id} className="product">
         <img src={product.image} alt={product.name} />
-        <p>{product.amount}</p>
+        <p className="price">{product.amount}</p>
         <p>{product.name}</p>
       </div>
     );
   });
 
   return (
-    <div>
-      <h1>WELCOME TO OUR STORE</h1>
-      <h2>DESKTOPS</h2>
-      {desktopFeatured}
-      <h2>TABLETS</h2>
-      {tabletsFeatured}
+    <div className="container">
+      <h1 className="header_big">WELCOME TO OUR STORE</h1>
+      <h2 className="header_small">DESKTOPS</h2>
+      <div className="products"> {desktopFeatured}</div>
+      <h2 className="header_small">TABLETS</h2>
+      <div className="products"> {tabletsFeatured}</div>
     </div>
   );
 };
