@@ -12,7 +12,6 @@ const Catalog = () => {
   const [inputValue, setInputValue] = useState("");
   const [radioValue, setRadioValue] = useState("all");
   const [radioSearch, setRadioSearch] = useState("");
-  const [checkedRadio, setCheckedRadio] = useState();
 
   // FUNKCJE OBSŁUGUJĄCE ZMIANY
   const handleSearch = (e) => {
@@ -23,15 +22,12 @@ const Catalog = () => {
   };
 
   const showManufacturer = (e) => {
-    setCheckedRadio();
     setInputValue("");
     setRadioValue(e.target.value);
   };
   const handleClear = () => {
     setInputValue("");
     setRadioSearch("");
-    setRadioValue("all");
-    setCheckedRadio(false);
   };
   // LEWA KOLUMNA MANUFACTURERS
 
@@ -55,7 +51,6 @@ const Catalog = () => {
           id={product}
           value={product}
           onChange={showManufacturer}
-          checked={checkedRadio}
         />
         <label htmlFor={product}> {product}</label>
       </div>
@@ -147,7 +142,6 @@ const Catalog = () => {
                   id="all"
                   value="all"
                   onChange={showManufacturer}
-                  checked={checkedRadio}
                 />
                 <label htmlFor="all">All</label>
               </div>
